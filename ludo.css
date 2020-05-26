@@ -22,7 +22,7 @@ main > div{
 	padding: 2rem;
 	padding-bottom: 1.5rem;
 	text-align:center;
-	color:lightblue; 	
+	color:black; 	
 	box-sizing: border-box;
 	box-shadow: 0px 0px 5px 2px rgba(0,0,0,.3);
 
@@ -33,24 +33,22 @@ main > div{
 
 div#item1{
 	background-color: green;
-	color: green;
 	box-shadow: 0px 0px 5px 2px white;
 }
-div#item33{
+div#item17{
 	background-color: yellow;
-	color: yellow;
 	box-shadow: 0px 0px 5px 2px white;
 
 }
 
-div#item11{
+div#item32{
 	background-color:rgba(0,128,0,.2); 
 }
 
-div#item24{
+div#item16{
 	background-color: rgba(255,255,0,.2);
 }
-div#item10{
+div#emptycnt{
 	padding: 1rem;
 	background-color:white;
 	display: grid;
@@ -65,12 +63,12 @@ div#item10{
 	font-weight: bold;
 }
 
-#item10{
+#emptycnt{
 	grid-area:2 / 2 /  9 / 9;
 
 }
 
-#item10 >div{
+#emptycnt >div{
 	padding: 1rem;
 }
 
@@ -94,7 +92,7 @@ div#item10{
 
 }
 
- #item10 >div{
+ #emptycnt >div{
 	 	padding: 1rem;
 	 }
 
