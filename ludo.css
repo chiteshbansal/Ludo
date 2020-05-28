@@ -1,0 +1,253 @@
+body{
+	background-image: url('ludo.jpg');
+	background-size: cover;
+}
+
+main{
+	position: relative;
+	
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+main > div{
+	margin: 1rem;
+	box-sizing: border-box;
+	margin-top: 0;
+}
+
+#heading{
+	text-align: center;
+	font-weight:weight;
+
+	font-family: cursive;
+	position: relative;
+}
+#heading img {
+	margin: .5rem;
+	border-radius: 10px;
+	transition: .4s ease-in-out;
+	box-shadow: 0px 0px 5px 2px white;
+}
+
+#heading img:hover{
+	box-shadow: 0px 0px 5px 5px white;
+}
+
+#heading div{
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: .4rem;
+}
+#grid-container{
+	width: 60%;
+	padding-top: 0;
+	margin-top: 0;
+	grid-gap: 8px;
+	display: inline-grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto ;
+}
+
+#grid-container >div{
+	background-color: white;
+	border: 1px solid black;
+	padding: 2rem;
+	padding-bottom: 1.5rem;
+	text-align:center;
+	color:black; 	
+	box-sizing: border-box;
+	box-shadow: 0px 0px 5px 2px rgba(0,0,0,.3);
+
+}
+.inline-div{
+	display: inline-block;
+}
+
+div#item1{
+	background-color: green;
+	box-shadow: 0px 0px 5px 2px white;
+	background-image: url("https://img.icons8.com/android/48/000000/crown.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	color:white;
+}
+div#item17{
+	background-color: yellow;
+	box-shadow: 0px 0px 5px 2px white;
+	background-image: url("https://img.icons8.com/android/48/000000/crown.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	color:white;
+
+}
+
+div#item32{
+	background-color:rgba(0,128,0,.2); 
+	background-image: url("https://img.icons8.com/emoji/48/000000/star-emoji.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+div#item18{
+	background-color: rgba(255,255,0,.5);
+	background-image: url("https://img.icons8.com/emoji/48/000000/star-emoji.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+div#emptycnt{
+	padding: 1rem;
+	background-color:white;
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto ;
+	grid-template-rows: auto auto auto auto auto auto;
+}
+
+#middle-cnt{
+	grid-area: 2/ 2 / 6 / 7;
+	border: 1px solid black;
+	color: black;
+	font-weight: bold;
+	position: relative;
+}
+
+#emptycnt{
+	grid-area:2 / 2 /  9 / 9;
+	background-image: linear-gradient(to top right,green,lightgreen,yellowgreen,yellow);
+}
+
+#emptycnt >div{
+	padding: 1rem;
+}
+
+#middle-cnt>div{
+	padding: 1rem;
+}
+
+#playerB{
+	align-self: flex-end;
+}
+
+#safeZone-cnt{
+	position: relative;
+	left: -10%;
+}
+#safeZone{
+
+	position: absolute;
+	top: 35%;
+	padding-left: .5rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+
+
+
+.playerbox{
+	padding: 1rem;
+	 border: 1px solid black;
+	 background-color: white;
+	 box-shadow: 0px 0px 5px 2px rgba(0,0,0,.4);
+	 text-align: center;
+	 font-weight: bold;
+	 align-self: flex-start;
+
+}
+
+.playerbox:hover{
+	 box-shadow: 0px 0px 5px 5px rgba(0,0,0,.4);
+}
+
+ #emptycnt >div{
+	 	padding: 1rem;
+	 }
+
+.playerbox >div{
+	padding: 1rem;
+}
+
+#manualbtn,#play_again_btn{
+	padding: 1rem;
+	box-shadow: 2px 2px 4px black;
+	display: inline-block;
+	margin-top: 1rem;
+	font-family: cursive;
+	font-weight: bold;
+}
+
+#roll{
+	padding:.5rem;
+	font-family: cursive;
+	font-size: 1.2rem;
+	box-shadow: 0px 0px 4px 4px white;
+	display: inline-block;
+	letter-spacing: 5px;
+}
+
+#middle-cnt{
+	box-shadow: 0px 0px 4px 4px rgba(0,0,0,.5);
+}
+
+
+#play_again_btn{
+	font-size: 1.5rem;
+	color: red;
+	position: absolute;
+	top: 72%;
+	left: 37%;
+	box-shadow: 0px 0px 4px 4px white;
+	border: none;
+	transition: .4s;
+}
+
+#play_again_btn:hover{
+	box-shadow: 0px 0px 8px 4px white;
+	transform: scale(1.3,1.3);
+}
+
+.game{
+	width: 0%;
+	height: 100%;
+	background-image: url('gameover.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	box-sizing: border-box;
+	color:white;
+	text-align:center;
+	font-size: 2rem;
+	font-family: cursive;
+	overflow: hidden;	
+}
+input[type=number]{
+	padding: 1rem;
+	font-weight: bold;
+	font-family: cursive;
+}
+
+
+@media screen and (max-width: 1400px)
+{
+	.playerbox{
+		width: 100%;
+	}
+
+	#grid-container{
+		width: 100%;
+	}
+}
+
+
+#playerA{
+	border: 2px solid green;
+	
+}
+
+#playerB{
+	border:2px solid yellow;
+	
+}
