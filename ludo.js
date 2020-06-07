@@ -123,6 +123,21 @@ function gameover(player)
 	document.getElementsByClassName('game')[0].insertBefore(newnode,playbtn); 
 
 }
+
+function WinnerBox( pos , token,player){
+
+	var newstr  =document.getElementById('item'+pos).innerText;
+	document.getElementById('item'+pos).innerText = newstr.replace(token,'');
+	document.getElementsByClassName('WinnerToken')[0].innerText+=' '+token;
+	let curr_token_no= token[0];
+	// if(player=='A')
+	// {
+	// 	tokenApos[curr_token_no]=undefined;
+	// }else if(player=='B')
+	// {
+	// 	tokenBpos[curr_token_no]=undefined;
+	// }
+}
 function move2B(){
 	// when we are having two takens of same player on a single block 
 
@@ -169,7 +184,11 @@ function move2B(){
 	// rather than checking after every move 
 	if(tokenBpos[1]==18 && win('B',tokenBpos,18))
 	{
+		WinnerBox(tokenBpos[1],'2B',"B");
 		gameover('B');
+	}else if(tokenBpos[1]==18)
+	{
+		WinnerBox(tokenBpos[1],'2B',"B");
 	}
 	
 }
@@ -215,7 +234,11 @@ function move1B(){
 
 	if(tokenBpos[0]==18 && win('B',tokenBpos,18))
 	{
+		WinnerBox(tokenBpos[0],'1B','B');
 		gameover('B');
+	}else if(tokenBpos[0]==18)
+	{
+		WinnerBox(tokenBpos[0],'1B','B');
 	}
 }
 
@@ -264,7 +287,11 @@ function move1A(){
 
 	if(tokenApos[0]==32 && win('A',tokenApos,32))
 	{
+		WinnerBox(tokenApos[0],'1A','A');
 		gameover('A');
+	}else if(tokenApos[0]==32)
+	{
+		WinnerBox(tokenApos[0],'1A','A');
 	}
 }
 
@@ -313,7 +340,12 @@ function move2A(){
 
 	if(tokenApos[1]==32 && win('A',tokenApos,32))
 	{
+		WinnerBox(tokenApos[1],'2A','A');
+
 		gameover('A');
+	}else if(tokenApos[1]==32)
+	{
+		WinnerBox(tokenApos[1],'2A','A');
 	}
 
 }
@@ -413,9 +445,19 @@ function Movethetocken()
 				 freetoken1pos = document.getElementById('item'+tokenApos[0]);
 				freetoken2pos = document.getElementById('item'+tokenApos[1]);
 				if(tokenApos[0]+dicenumber<=32)// token should not past the end point
-					freetoken1pos.addEventListener('click',move1A);
+				{
+					if(tokenApos[1]==32)
+						move1A();
+					else
+						freetoken1pos.addEventListener('click',move1A);
+				}
 				if(tokenApos[0]!=tokenApos[1] && tokenApos[1]+dicenumber<=32)//the token should not past the end point
-					freetoken2pos.addEventListener('click',move2A);
+				{
+					if(tokenApos[0]==32)
+						move2A();
+					else
+						freetoken2pos.addEventListener('click',move2A);
+				}
 				else if(tokenApos[0]+dicenumber>32 && tokenApos[2]+dicenumber>32)
 				{
 					currentturn='B';
@@ -430,12 +472,15 @@ function Movethetocken()
 			}else if (freetokenA==1 && dicenumber==6)
 			{
 				playerAbox = document.getElementById('playerA');
-				playerAbox.addEventListener('click',newtokenA);
+				if(tokenApos[0]==32 || tokenApos[1]==32)
+					newtokenA();
+				else
+					playerAbox.addEventListener('click',newtokenA);
 				// if the player click on the already open one ;
-				if(tokenApos[0]!=undefined && tokenApos[0]+dicenumber<=32)
+				if(tokenApos[0]!=undefined && tokenApos[0]+dicenumber<32)
 				{freetoken1pos = document.getElementById('item'+tokenApos[0]);
 						freetoken1pos.addEventListener('click',move1A);}
-				else if(tokenApos[1]!=undefined && tokenApos[1]+dicenumber<=32)// token should be open and should not past the end point
+				else if(tokenApos[1]!=undefined && tokenApos[1]+dicenumber<32)// token should be open and should not past the end point
 				{
 					freetoken2pos=document.getElementById('item'+tokenApos[1]);
 					freetoken2pos.addEventListener('click',move2A);
@@ -483,11 +528,21 @@ function Movethetocken()
 				freetoken1pos = document.getElementById('item'+tokenBpos[0]);
 				freetoken2pos = document.getElementById('item'+tokenBpos[1]);
 				if(!(tokenBpos[0]-dicenumber<18 && helper1B==true))
-					freetoken1pos.addEventListener('click',move1B);
+					{
+						if(tokenBpos[1]==18)
+							move1B()
+						else
+							freetoken1pos.addEventListener('click',move1B);
+					}
 				// if both the tokens are at same step 
 				// then we allow movement of only one of them 
 				if(tokenBpos[0]!=tokenBpos[1] && !(tokenBpos[1]-dicenumber<18 && helper2B==true))
-					freetoken2pos.addEventListener('click',move2B);
+				{
+					if(tokenBpos[0]==18)
+						move2B();
+					else
+					 	freetoken2pos.addEventListener('click',move2B);
+				}
 				else if((tokenBpos[0]-dicenumber<18 && helper1B==true) && (tokenBpos[1]-dicenumber<18 && helper2B==true))
 				{
 					currentturn='A';
@@ -502,7 +557,10 @@ function Movethetocken()
 			}else if (freetokenB==1 && dicenumber==6)
 			{
 				playerBbox = document.getElementById('playerB');
-				playerBbox.addEventListener('click',newtokenB);
+				if(tokenBpos[0]==18 || tokenBpos[1]==18)
+					newtokenB();
+				else
+					playerBbox.addEventListener('click',newtokenB);
 
 				if(tokenBpos[0]!=undefined && !(tokenBpos[0]-dicenumber<18 && helper1B==true))
 				{freetoken1pos = document.getElementById('item'+tokenBpos[0]);
@@ -590,23 +648,23 @@ function Manualdice()
 	dicerolling();
 }
 
-var currentbox=1;
-function discoeffect()
-{
+// var currentbox=1;
+// function discoeffect()
+// {
 	
 	
-	if(currentbox!=1)
-		document.getElementById('item'+Number(currentbox-1)).style.boxShadow='';
-	else 
-		document.getElementById('item32').style.boxShadow='';
-	var box = document.getElementById('item'+ currentbox);
-	box.style.boxShadow="0px 0px 5px 5px white";
-	if(currentbox==32)
-		currentbox=0;
-	currentbox++;
+// 	if(currentbox!=1)
+// 		document.getElementById('item'+Number(currentbox-1)).style.boxShadow='';
+// 	else 
+// 		document.getElementById('item32').style.boxShadow='';
+// 	var box = document.getElementById('item'+ currentbox);
+// 	box.style.boxShadow="0px 0px 5px 5px white";
+// 	if(currentbox==32)
+// 		currentbox=0;
+// 	currentbox++;
 	
 
-}
+// }
 
 
-setInterval(discoeffect,100);
+// setInterval(discoeffect,100);
