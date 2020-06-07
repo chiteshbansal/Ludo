@@ -444,10 +444,12 @@ function Movethetocken()
 			}else {
 				if(tokenApos[0]!=undefined && tokenApos[0]+dicenumber<=32)
 				{freetoken1pos = document.getElementById('item'+tokenApos[0]);
-						freetoken1pos.addEventListener('click',move1A);
+						// freetoken1pos.addEventListener('click',move1A);
+						move1A();
 				}else if(tokenApos[1]!=undefined && tokenApos[1]+dicenumber<=32){
 					freetoken2pos = document.getElementById('item'+tokenApos[1]);
-					freetoken2pos.addEventListener('click',move2A);
+					// freetoken2pos.addEventListener('click',move2A);
+					move2A();	
 				}else{
 					currentturn = 'B';
 					dice.addEventListener('click',rollthedice)
@@ -519,11 +521,13 @@ function Movethetocken()
 			}else {
 				if(tokenBpos[0]!=undefined &&!(tokenBpos[0]-dicenumber<18 && helper1B==true) )
 				{freetoken1pos = document.getElementById('item'+tokenBpos[0]);
-						freetoken1pos.addEventListener('click',move1B);
+						// freetoken1pos.addEventListener('click',move1B);
+						move1B();
 				}else if(tokenBpos[1]!=undefined && !(tokenBpos[1]-dicenumber<18 && helper2B==true))
 				{
 					freetoken2pos = document.getElementById('item'+tokenBpos[1]);
-					freetoken2pos.addEventListener('click',move2B);
+					// freetoken2pos.addEventListener('click',move2B);
+					move2B();
 				}else{
 					currentturn= 'A';
 					dice.addEventListener('click',rollthedice);
